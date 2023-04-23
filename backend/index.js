@@ -1,35 +1,40 @@
 const { ApolloServer } = require('apollo-server')
-const _ = require('lodash')
 
 const queries = require('./typedefs-resolvers/_queries')
 const mutations = require('./typedefs-resolvers/_mutations')
-const enums = require('./typedefs-resolvers/_enum')
-const equipments = require('./typedefs-resolvers/equipments')
-const supplies = require('./typedefs-resolvers/supplies')
-const softwares = require('./typedefs-resolvers/softwares')
+const enums = require('./typedefs-resolvers/_enums')
+const teams = require('./typedefs-resolvers/teams')
 const people = require('./typedefs-resolvers/people')
-const givens = require('./typedefs-resolvers/givens')
+const roles = require('./typedefs-resolvers/roles')
+const equipments = require('./typedefs-resolvers/equipments')
+const softwares = require('./typedefs-resolvers/softwares')
+const supplies = require('./typedefs-resolvers/supplies')
 const tools = require('./typedefs-resolvers/tools')
+const givens = require('./typedefs-resolvers/givens')
 
 const typeDefs = [
     queries,
     mutations,
     enums,
-    equipments.typeDefs,
-    supplies.typeDefs,
-    softwares.typeDefs,
+    teams.typeDefs,
     people.typeDefs,
-    givens.typeDefs,
-    tools.typeDefs
+    roles.typeDefs,
+    equipments.typeDefs,
+    softwares.typeDefs,
+    supplies.typeDefs,
+    tools.typeDefs,
+    givens.typeDefs
 ]
 
 const resolvers = [
-    equipments.resolvers,
-    supplies.resolvers,
-    softwares.resolvers,
+    teams.resolvers,
     people.resolvers,
-    givens.resolvers,
-    tools.resolvers
+    roles.resolvers,
+    equipments.resolvers,
+    softwares.resolvers,
+    supplies.resolvers,
+    tools.resolvers,
+    givens.resolvers
 ]
 
 const server =  new ApolloServer({typeDefs, resolvers})
